@@ -79,5 +79,7 @@ def download(image,file_uploaded):
     output_filename = f"{st.session_state.caption}"+"_"+os.path.splitext(input_filename)[0] +".jpg"
     href = f'<a href="data:image/jpeg;base64,{download_data}" download="{output_filename}">Tải xuống ảnh</a>'
     st.sidebar.markdown(href, unsafe_allow_html=True)
+def display_image_color(column, img, caption):
+    column.image(img, caption, use_column_width=True,channels="BGR")
     
    
