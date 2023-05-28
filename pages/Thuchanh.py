@@ -84,7 +84,7 @@ def chuong3():
             st.markdown('<h4 style="color: white;">Input Image</h4>', unsafe_allow_html=True)
             st.image(st.session_state.imgin, use_column_width=True)
         with col2:
-            st.subheader("Output Image")
+            st.markdown('<h3 style="color: white;">Output Image</h3>', unsafe_allow_html=True)
 
         #with col3:
         st.markdown('<h4 style="color: white;">Button</h4>', unsafe_allow_html=True)
