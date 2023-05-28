@@ -64,26 +64,20 @@ def main_Color():
             st.session_state.caption= "Gradient Image"
             display_image_color(col2, st.session_state.imgout, "Gradient Image")
 
-    if st.sidebar.button("Save Image"):
+    if st.sidebar.button("Download Image"):
         if st.session_state.imgout is not None:
-            # Th15.save_image2(st.session_state.imgout,file_uploaded)
-            save_image(st.session_state.imgout)
+            download(st.session_state.imgout,file_uploaded)
         else:
-            st.sidebar.warning("Không có ảnh đầu ra để lưu.")
+            st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 
-def save_image(image):
-    output_folder = st.sidebar.text_input("Nhập đường dẫn đến thư mục:", placeholder="path/to/output/folder")
-    if output_folder:
-        if os.path.isdir(output_folder):
-            input_filename = os.path.basename(file_uploaded.name)
-            output_filename = f"{st.session_state.caption}"+"_"+os.path.splitext(input_filename)[0] +".jpg"
-            output_path = os.path.join(output_folder, output_filename)
-            cv2.imwrite(output_path, image)
-            st.sidebar.success(f"Ảnh đã được lưu vào: {output_path}")
-        else:
-            st.sidebar.warning("Đường dẫn thư mục không hợp lệ.")
-    else:
-        st.sidebar.warning("Vui lòng nhập đường dẫn đến thư mục.")
-def display_image_color(column, img, caption):
-    column.image(img, caption, use_column_width=True,channels="BGR")
+def download(image,file_uploaded):
+    _, encoded_image = cv2.imencode('.jpg', image)
+    image_bytes=encoded_image.tobytes()
+
+    download_data = base64.b64encode(image_bytes).decode()
+    input_filename = os.path.basename(file_uploaded.name)
+    output_filename = f"{st.session_state.caption}"+"_"+os.path.splitext(input_filename)[0] +".jpg"
+    href = f'<a href="data:image/jpeg;base64,{download_data}" download="{output_filename}">Tải xuống ảnh</a>'
+    st.sidebar.markdown(href, unsafe_allow_html=True)
+    
    
