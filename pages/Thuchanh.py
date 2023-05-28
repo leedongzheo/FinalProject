@@ -36,7 +36,7 @@ def add_bg_from_local(image_file):
 add_bg_from_local('Background/Thuchanh.png')  
 
 def main():
-    st.markdown('<style>h4 { margin-bottom: 0px; }</style>', unsafe_allow_html=True)
+    st.markdown('<style>h4 { margin-bottom: 5px; }</style>', unsafe_allow_html=True)
     # st.session_state = SessionState()
     if 'imgin' not in st.session_state:
         st.session_state.imgin = None
