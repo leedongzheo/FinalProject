@@ -44,6 +44,15 @@ def main():
     if 'caption' not in st.session_state:
         st.session_state.caption=None
     st.title("Computer Vision")
+    
+    with open("Test_Image.zip", "rb") as fp:
+        btn = st.download_button(
+            label="Download ZIP",
+            data=fp,
+            file_name="Test_Image.zip",
+            mime="application/zip"
+    )
+       
     menu = st.sidebar.selectbox("Menu", ("Chuong3", "Chuong4", "Chuong5", "Chuong9"))
     if menu == "Chuong3":
         menu = st.sidebar.selectbox("Menu", ("GRAYSCALE Image", "Color Image"))
