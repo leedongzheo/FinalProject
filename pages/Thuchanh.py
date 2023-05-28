@@ -302,7 +302,8 @@ def download(image,file_uploaded):
     
 def display_image(column, img, caption):
     column.image(img, use_column_width=True,unsafe_allow_html=True)
-    st.markdown(f'<h3 style="color: white;">{caption}</h3>', unsafe_allow_html=True)
+    caption=f'<h3 style="color: white;">{caption}</h3>'
+    st.markdown(caption, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
