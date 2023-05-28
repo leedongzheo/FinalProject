@@ -36,6 +36,16 @@ def add_bg_from_local(image_file):
 add_bg_from_local('Background/Thuchanh.png')  
 
 def main():
+    st.markdown(
+    """
+    <style>
+    .my-subheader {
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
     # st.session_state = SessionState()
     if 'imgin' not in st.session_state:
         st.session_state.imgin = None
@@ -70,7 +80,7 @@ def main():
         chuong9()
 
 def chuong3():
-    st.subheader("Chương 3")
+    st.subheader("Chương 3", unsafe_allow_html=True, className="my-subheader")
     file_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "tif"])
 
     if file_uploaded is not None:
