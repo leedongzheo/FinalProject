@@ -4,7 +4,6 @@ import sys
 import os
 import numpy as np
 import base64
-sys.path.append('pages/ModelComputerVision')
 import Chuong3 as c3
 import Chuong4 as c4
 import Chuong5 as c5
