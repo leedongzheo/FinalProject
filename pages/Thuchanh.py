@@ -73,7 +73,7 @@ def main():
 def chuong3():
     st.markdown('<h3 style="color: white;">Chương 3</h3>', unsafe_allow_html=True)
     st.markdown('<h4 style="color: white;">Upload an image</h4>', unsafe_allow_html=True)
-    file_uploaded = st.file_uploader("", type=["jpg", "jpeg", "png", "tif"])
+    file_uploaded = st.file_uploader(type=["jpg", "jpeg", "png", "tif"])
 
     if file_uploaded is not None:
         image = np.array(bytearray(file_uploaded.read()), dtype=np.uint8)
@@ -84,7 +84,7 @@ def chuong3():
             st.markdown('<h4 style="color: white;">Input Image</h4>', unsafe_allow_html=True)
             st.image(st.session_state.imgin, use_column_width=True)
         with col2:
-            st.markdown('<h3 style="color: white;">Output Image</h3>', unsafe_allow_html=True)
+            st.markdown('<h4 style="color: white;">Output Image</h4>', unsafe_allow_html=True)
 
         #with col3:
         st.markdown('<h4 style="color: white;">Button</h4>', unsafe_allow_html=True)
@@ -173,8 +173,9 @@ def chuong3():
             st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 
 def chuong4():
-    st.subheader("Chương 4")
-    file_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "tif"])
+    st.markdown('<h3 style="color: white;">Chương 4</h3>', unsafe_allow_html=True)
+    st.markdown('<h4 style="color: white;">Upload an image</h4>', unsafe_allow_html=True)
+    file_uploaded = st.file_uploader("", type=["jpg", "jpeg", "png", "tif"])
     if st.sidebar.button("DrawNotchRejectFilter"):
         st.session_state.imgout = c4.DrawNotchRejectFilter()
         st.session_state.caption= "DrawNotchRejectFilter"
@@ -187,12 +188,12 @@ def chuong4():
 
         col1, col2, col3= st.columns([3, 3, 2])
         with col1:
-            st.subheader("Input Image")
+            st.markdown('<h4 style="color: white;">Input Image</h4>', unsafe_allow_html=True)
             st.image(st.session_state.imgin, use_column_width=True)
         with col2:
-            st.subheader("Output Image")
+            st.markdown('<h4 style="color: white;">Output Image</h4>', unsafe_allow_html=True)
         with col3:
-            st.subheader("Buttons")
+            st.markdown('<h4 style="color: white;">Button</h4>', unsafe_allow_html=True)
     
             if st.button("Spectrum"):
                 st.session_state.imgout = c4.Spectrum(st.session_state.imgin)
@@ -215,20 +216,21 @@ def chuong4():
         else:
             st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 def chuong5():
-    st.subheader("Chương 5")
-    file_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "tif"])
+    st.markdown('<h3 style="color: white;">Chương 5</h3>', unsafe_allow_html=True)
+    st.markdown('<h4 style="color: white;">Upload an image</h4>', unsafe_allow_html=True)
+    file_uploaded = st.file_uploader("", type=["jpg", "jpeg", "png", "tif"])
 
     if file_uploaded is not None:
         image = np.array(bytearray(file_uploaded.read()), dtype=np.uint8)
         st.session_state.imgin = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
         col1, col2, col3= st.columns([3, 3, 2])
         with col1:
-            st.subheader("Input Image")
+            st.markdown('<h4 style="color: white;">Input Image</h4>', unsafe_allow_html=True)
             st.image(st.session_state.imgin, use_column_width=True)
         with col2:
-            st.subheader("Output Image")
+            st.markdown('<h4 style="color: white;">Output Image</h4>', unsafe_allow_html=True)
         with col3:
-            st.subheader("Buttons")
+            st.markdown('<h4 style="color: white;">Button</h4>', unsafe_allow_html=True)
 
             if st.button("CreateMotionNoise"):
                 st.session_state.imgout = c5.CreateMotionNoise(st.session_state.imgin)
@@ -252,20 +254,21 @@ def chuong5():
         else:
             st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 def chuong9():
-    st.subheader("Chương 9")
-    file_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "tif"])
+    st.markdown('<h3 style="color: white;">Chương 9</h3>', unsafe_allow_html=True)
+    st.markdown('<h4 style="color: white;">Upload an image</h4>', unsafe_allow_html=True)
+    file_uploaded = st.file_uploader("", type=["jpg", "jpeg", "png", "tif"])
 
     if file_uploaded is not None:
         image = np.array(bytearray(file_uploaded.read()), dtype=np.uint8)
         st.session_state.imgin = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
         col1, col2, col3= st.columns([3, 3, 3])
         with col1:
-            st.subheader("Input Image")
+            st.markdown('<h4 style="color: white;">Input Image</h4>', unsafe_allow_html=True)
             st.image(st.session_state.imgin, use_column_width=True)
         with col2:
-            st.subheader("Output Image")
+            st.markdown('<h4 style="color: white;">Output Image</h4>', unsafe_allow_html=True)
         with col3:
-            st.subheader("Buttons")
+            st.markdown('<h4 style="color: white;">Button</h4>', unsafe_allow_html=True)
             if st.button("Boundary"):
                 st.session_state.imgout = c9.Boundary(st.session_state.imgin)
                 st.session_state.caption= "Boundary Image"
