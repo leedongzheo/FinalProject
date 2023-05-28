@@ -73,7 +73,7 @@ def main():
 def chuong3():
     st.markdown('<h3 style="color: white;">Chương 3</h3>', unsafe_allow_html=True)
     st.markdown('<h4 style="color: white;">Upload an image</h4>', unsafe_allow_html=True)
-    file_uploaded = st.file_uploader(type=["jpg", "jpeg", "png", "tif"])
+    file_uploaded = st.file_uploader("",type=["jpg", "jpeg", "png", "tif"])
 
     if file_uploaded is not None:
         image = np.array(bytearray(file_uploaded.read()), dtype=np.uint8)
