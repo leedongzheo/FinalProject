@@ -302,7 +302,7 @@ def download(image,file_uploaded):
     
 def display_image(column, img, caption):
     caption=f'<span style="color:white;">{caption}</span>'
-    column.image(img,caption, use_column_width=True)
+    column.image(img,caption, use_column_width=True,unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
