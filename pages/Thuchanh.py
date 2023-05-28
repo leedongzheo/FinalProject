@@ -43,7 +43,8 @@ def main():
         st.session_state.imgout = None
     if 'caption' not in st.session_state:
         st.session_state.caption=None
-    st.title("Computer Vision", fgcolor="black")
+#     st.title("Computer Vision", fgcolor="black")
+    st.markdown("<h1 style='color: black;'>Computer Vision</h1>", unsafe_allow_html=True)
     
     with open("Test_Image.zip", "rb") as fp:
         btn = st.download_button(
