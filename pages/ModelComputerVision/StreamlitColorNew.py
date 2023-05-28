@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import Chuong3 as c3
 import os
+import base64
 def main_Color():
     global file_uploaded
     st.subheader("Chương 3")
