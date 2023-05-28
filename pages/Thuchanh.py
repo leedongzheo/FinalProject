@@ -301,7 +301,7 @@ def download(image,file_uploaded):
     st.sidebar.markdown(href, unsafe_allow_html=True)
     
 def display_image(column, img, caption):
-    column.image(img,caption,use_column_width=True,unsafe_allow_html=True)
+    column.image(img,caption=caption,use_column_width=True,unsafe_allow_html=True)
 #     caption=f'<h3 style="color: white;">{caption}</h3>'
 #     st.markdown(caption, unsafe_allow_html=True)
 
