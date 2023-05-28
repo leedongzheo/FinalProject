@@ -8,7 +8,7 @@ import Chuong3 as c3
 import Chuong4 as c4
 import Chuong5 as c5
 import Chuong9 as c9
-import StreamlitColorNew as StCN
+import StreamlitColorNew as stCN
 
 st.markdown("""
 <style>
@@ -58,7 +58,7 @@ def main():
         if menu=="GRAYSCALE Image":
             chuong3()
         else:
-            StCN.main_Color()
+            stCN.main_Color()
 
     if menu == "Chuong4":
         chuong4()
