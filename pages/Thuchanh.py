@@ -52,7 +52,7 @@ def main():
             file_name="Test_Image.zip",
             mime="application/zip"
     )
-       
+        
     menu = st.sidebar.selectbox("Menu", ("Chuong3", "Chuong4", "Chuong5", "Chuong9"))
     if menu == "Chuong3":
         menu = st.sidebar.selectbox("Menu", ("GRAYSCALE Image", "Color Image"))
@@ -163,11 +163,11 @@ def chuong3():
             display_image(col2, st.session_state.imgout, "Gradient Image")
 
 
-    if st.sidebar.button("Save Image"):
+    if st.sidebar.button("Download Image"):
         if st.session_state.imgout is not None:
-            save_image(st.session_state.imgout, file_uploaded)
+            download(st.session_state.imgout,file_uploaded)
         else:
-            st.sidebar.warning("Không có ảnh đầu ra để lưu.")
+            st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 
 def chuong4():
     st.subheader("Chương 4")
@@ -206,11 +206,11 @@ def chuong4():
                 st.session_state.caption= "RemoveMoire Image"
                 display_image(col2, st.session_state.imgout, "RemoveMoire Image") 
 
-    if st.sidebar.button("Save Image"):
+    if st.sidebar.button("Download Image"):
         if st.session_state.imgout is not None:
-            save_image(st.session_state.imgout, file_uploaded)
+            download(st.session_state.imgout,file_uploaded)
         else:
-            st.sidebar.warning("Không có ảnh đầu ra để lưu.")
+            st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 def chuong5():
     st.subheader("Chương 5")
     file_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "tif"])
@@ -243,11 +243,11 @@ def chuong5():
                 st.session_state.caption= "DenoisestMotion Image"
                 display_image(col2, st.session_state.imgout, "DenoisestMotion Image") 
 
-    if st.sidebar.button("Save Image"):
+    if st.sidebar.button("Download Image"):
         if st.session_state.imgout is not None:
-            save_image(st.session_state.imgout, file_uploaded)
+            download(st.session_state.imgout,file_uploaded)
         else:
-            st.sidebar.warning("Không có ảnh đầu ra để lưu.")
+            st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 def chuong9():
     st.subheader("Chương 9")
     file_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "tif"])
@@ -276,45 +276,26 @@ def chuong9():
             if st.button("CountRice"):
                 st.session_state.imgout = c9.CountRice(st.session_state.imgin)
                 st.session_state.caption= "CountRice Image"
-                display_image(col2, st.session_state.imgout, "CountRice Image")  
+                display_image(col2, st.session_state.imgout, "CountRice Image")
 
-    if st.sidebar.button("Save Image"):
+    if st.sidebar.button("Download Image"):
         if st.session_state.imgout is not None:
-            save_image(st.session_state.imgout,file_uploaded)
+            download(st.session_state.imgout,file_uploaded)
         else:
-            st.sidebar.warning("Không có ảnh đầu ra để lưu.")
+            st.sidebar.warning("Không có ảnh đầu ra để tải xuống.")
 
-def save_image(image,file_uploaded):
-    output_folder = st.sidebar.text_input("Nhập đường dẫn đến thư mục:", placeholder="path/to/output/folder")
-    if output_folder:
-        if os.path.isdir(output_folder):
-            input_filename = os.path.basename(file_uploaded.name)
-            output_filename = f"{st.session_state.caption}"+"_"+os.path.splitext(input_filename)[0] +".jpg"
-            output_path = os.path.join(output_folder, output_filename)
-            cv2.imwrite(output_path, image)
-            st.sidebar.success(f"Ảnh đã được lưu vào: {output_path}")
-        else:
-            st.sidebar.warning("Đường dẫn thư mục không hợp lệ.")
-    else:
-        st.sidebar.warning("Vui lòng nhập đường dẫn đến thư mục.")
+def download(image,file_uploaded):
+    _, encoded_image = cv2.imencode('.jpg', image)
+    image_bytes=encoded_image.tobytes()
 
+    download_data = base64.b64encode(image_bytes).decode()
+    input_filename = os.path.basename(file_uploaded.name)
+    output_filename = f"{st.session_state.caption}"+"_"+os.path.splitext(input_filename)[0] +".jpg"
+    href = f'<a href="data:image/jpeg;base64,{download_data}" download="{output_filename}">Tải xuống ảnh</a>'
+    st.sidebar.markdown(href, unsafe_allow_html=True)
+    
 def display_image(column, img, caption):
     column.image(img, caption, use_column_width=True)
-
-
-# def save_image2(image,file_uploaded):
-#     output_folder = st.sidebar.text_input("Nhập đường dẫn đến thư mục:", placeholder="path/to/output/folder")
-#     if output_folder:
-#         if os.path.isdir(output_folder):
-#             input_filename = os.path.basename(file_uploaded.name)
-#             output_filename = f"{st.session_state.caption}"+"_"+os.path.splitext(input_filename)[0] +".jpg"
-#             output_path = os.path.join(output_folder, output_filename)
-#             cv2.imwrite(output_path, image)
-#             st.sidebar.success(f"Ảnh đã được lưu vào: {output_path}")
-#         else:
-#             st.sidebar.warning("Đường dẫn thư mục không hợp lệ.")
-#     else:
-#         st.sidebar.warning("Vui lòng nhập đường dẫn đến thư mục.")
 
 if __name__ == "__main__":
     main()
