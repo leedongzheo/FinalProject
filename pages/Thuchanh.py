@@ -71,7 +71,7 @@ def main():
 
 def chuong3():
     st.markdown('<h3 style="color: white;">Chương 3</h3>', unsafe_allow_html=True)
-    st.markdown('<h6 style="color: white;">Upload an image</h6>', unsafe_allow_html=True)
+    st.markdown('<h4 style="color: white;">Upload an image</h4>', unsafe_allow_html=True)
     file_uploaded = st.file_uploader("", type=["jpg", "jpeg", "png", "tif"])
 
     if file_uploaded is not None:
@@ -80,13 +80,13 @@ def chuong3():
 
         col1, col2= st.columns([3, 3])
         with col1:
-            st.subheader("Input Image")
+            st.markdown('<h4 style="color: white;">Input Image</h4>', unsafe_allow_html=True)
             st.image(st.session_state.imgin, use_column_width=True)
         with col2:
             st.subheader("Output Image")
 
         #with col3:
-        st.subheader("Buttons")
+        st.markdown('<h4 style="color: white;">Button</h4>', unsafe_allow_html=True)
         buttons_layout = st.columns(4)
 
         if buttons_layout[0].button("Negative"):
