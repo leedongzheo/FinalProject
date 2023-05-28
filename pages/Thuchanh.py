@@ -80,7 +80,7 @@ def main():
         chuong9()
 
 def chuong3():
-    st.subheader("Chương 3", unsafe_allow_html=True, className="my-subheader")
+    st.subheader("Chương 3", className="my-subheader")
     file_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "tif"])
 
     if file_uploaded is not None:
